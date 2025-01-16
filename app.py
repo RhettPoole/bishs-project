@@ -10,7 +10,7 @@ app.config['MAIL_SERVER']= 'smtp.gmail.com' # server address
 app.config['MAIL_PORT'] = 587 # server port
 app.config['MAIL_USE_TLS'] = True # enable TLS encryption, this makes the communication secure.
 app.config['MAIL_USERNAME'] = 'rhettpoole.20@gmail.com' 
-app.config['MAIL_PASSWORD'] = 'Blair202425!?'
+app.config['MAIL_PASSWORD'] = 'zron snjn lyjm xtpy' # app password for gmail account
 
 mail = Mail(app)
 
