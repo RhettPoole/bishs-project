@@ -1,14 +1,27 @@
+
 <!-- filepath: /x:/bishs-project/templates/index.html - comment for testing, DELETE BEFORE FINAL COMMIT -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bish's Test</title>
+    <meta property="og:title" content="Bish's Test Page - Rhett Poole" />
+    <meta name="description" content="Bish's Test Page for service requests." />
+    <meta
+      name="keywords"
+      content="Bish's, service, request, appointment, form, test, demonstration"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="author" content="Rhett Poole" />
+    <title>Bish's Service Test Page</title>
     <!-- Flask version of a stylesheet call, better than hardcoded paths. -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
+      href="/static/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/css/normalize.css"
     />
   </head>
   <body>
@@ -18,19 +31,36 @@
       project for Bish's, it is solely a showcase of my development skills and
       should not be considered an official Bish's product. **
     </header>
+    <header class="main-header">
+      <nav>
+        <ul>
+          <li><a href="index.html">Service</a></li>
+          <li><a href="">Parts</a></li>
+          <li>
+            <a
+              href="https://www.bishs.com/idaho-falls-idaho?utm_term=&utm_campaign=PMAX+-+November+2024+-+AUT&utm_source=adwords&utm_medium=ppc&hsa_acc=5831457341&hsa_cam=22073950548&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAiAnKi8BhB0EiwA58DA4YWkR0zjWTNtf9Pam7vJnCqpRsUr6R-Ub6vh6LW55b5f6rjMFR7qYRoCLB4QAvD_BwE"
+              >Sales</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <img
+      id="service-header"
+      src="/static/images/service-header.jpg"
+      alt="Photo of Bish's RV's external service counter and employees.">
     <div class="form-container">
-      <h1>Test - Contact Us</h1>
+      <h1>Service Request</h1>
       <form action="/send_email" method="post">
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required />
         </div>
-        <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
-          <label for="message">Message:</label>
+          <label for="message">List of repairs</label>
           <textarea id="message" name="message" rows="4" required></textarea>
         </div>
         <div class="form-group">
@@ -38,5 +68,25 @@
         </div>
       </form>
     </div>
+    <footer>
+      <p id="copyright"></p>
+      <p>United States of America |</p>
+      <p id="lastModified">Last Modification:</p>
+    </footer>
+    <script>
+      // MODIFICATION TIMESTAMP
+      let nLastModif = Date.parse(document.lastModified);
+      // Format the timestamp into a readable date string
+      let readableDate = new Date(nLastModif).toLocaleString();
+      // Insert the formatted date into the "lastModified" element
+      document.getElementById("lastModified").innerText += readableDate;
+
+      // COPYRIGHT SYMBOL AND YEAR
+      // Get the copyright element
+      const copyrightElement = document.getElementById("copyright");
+      // Dynamically insert the copyright symbol and current year
+      const currentYear = new Date().getFullYear();
+      copyrightElement.innerHTML = `&copy; ${currentYear} Rhett Poole | `;
+    </script>
   </body>
 </html>

@@ -55,7 +55,7 @@ def submit():
         sender="rhettpoole.20@gmail.com",
         recipients=["rhettpoole.20@gmail.com"],
     )  # Replace with the recipient's email
-    msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+    msg.body = f"Name: {name}\Phone Number\nEmail: {email}\nMessage: {message}"
 
     # Send the email
     mail.send(msg)
