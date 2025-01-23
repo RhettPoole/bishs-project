@@ -1,4 +1,3 @@
-
 <!-- filepath: /x:/bishs-project/templates/index.html - comment for testing, DELETE BEFORE FINAL COMMIT -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,8 @@
     <meta property="og:type" content="website" />
     <meta name="author" content="Rhett Poole" />
     <title>Bish's Service Test Page</title>
-    <!-- Flask version of a stylesheet call, better than hardcoded paths. -->
+    <!-- Flask version of a stylesheet call, better than hardcoded paths. Can potentially implement later. 
+     - Read that styles inline in your HTML file can be better for load times than an external CSS file in the static folder. Can implement later if needed. -->
     <link
       rel="stylesheet"
       href="/static/css/styles.css"
@@ -32,9 +32,10 @@
       should not be considered an official Bish's product. **
     </header>
     <header class="main-header">
+        <img id='logo' src="/static/images/bishs-logo.png" href="https://www.bishs.com" alt="Bish's RV logo" />
       <nav>
         <ul>
-          <li><a href="index.html">Service</a></li>
+          <li><a href="index.html" class="current">Service</a></li>
           <li><a href="">Parts</a></li>
           <li>
             <a
@@ -56,7 +57,8 @@
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required />
         </div>
-          <label for="email">Email:</label>
+        <div class="form-group">
+        <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
