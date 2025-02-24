@@ -21,7 +21,8 @@ app.config["MAIL_USERNAME"] = "rhettpoole.20@gmail.com"
 app.config["MAIL_PASSWORD"] = "zron snjn lyjm xtpy"  # app password for gmail account
 
 # Configure SQLAlchemy database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"  # database URI, SQLite - https://www.sqlite.org/docs.html
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"  # database URI - SQLite - https://www.sqlite.org/docs.html
+# Also look at DOCKER (For virtal machines), and Postgres - Mike/Bryan brought these up as tools to study for database integration/management.
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # disable tracking modifications
 
 mail = Mail(app)
