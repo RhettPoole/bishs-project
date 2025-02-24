@@ -1,4 +1,0 @@
-list of ideas for potential applications
-- something that will allow customers to check the status of their RV while it has an open work order without having to call in, see what their service writers contact info is, last notes, etc.
-    - We could add a function to the above app for the customer to request to add another jobline, which would then be handled by the service writer, similar to how techs can now do this on retool
-
