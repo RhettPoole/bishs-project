@@ -1,5 +1,4 @@
-# To view this app: https://bishs-services-f22217090ef6.herokuapp.com/
-# filepath: /x:/bishs-project/app.py - comment for testing, DELETE BEFORE FINAL COMMIT
+# https://bishs-services-f22217090ef6.herokuapp.com/
 # ** Disclaimer - This application is for experimentation and demonstration /n
 # purposes only. It is not intended for official use. Although labeled as a /n
 # project for Bish's, it is solely a showcase of my development skills and /n
