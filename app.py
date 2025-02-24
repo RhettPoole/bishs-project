@@ -8,6 +8,7 @@ from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 import os
 
+
 app = Flask(__name__)
 
 # Configure Flask-Mail server
@@ -20,7 +21,7 @@ app.config["MAIL_USERNAME"] = "rhettpoole.20@gmail.com"
 app.config["MAIL_PASSWORD"] = "zron snjn lyjm xtpy"  # app password for gmail account
 
 # Configure SQLAlchemy database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"  # database URI
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"  # database URI, SQLite - https://www.sqlite.org/docs.html
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # disable tracking modifications
 
 mail = Mail(app)
@@ -60,12 +61,7 @@ def submit():
     # Send the email
     mail.send(msg)
 
-    # Save the submission to the database
-    new_submission = Submission(name=name, email=email, message=message)
-    db.session.add(new_submission)
-    db.session.commit()
-
-    return redirect(url_for("index"))
+    # Need to add submission to database functionality at some point.
 
 
 if __name__ == "__main__":
