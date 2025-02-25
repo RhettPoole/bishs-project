@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 # Configure Flask-Mail server using environment variables which were assigned in the .env file
 app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER")
-app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT"))
+app.config["MAIL_PORT"] = os.getenv("MAIL_PORT")
 app.config["MAIL_USE_TLS"] = os.getenv("MAIL_USE_TLS") == 'True'
 app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
@@ -66,7 +66,7 @@ def submit():
         sender=os.getenv("MAIL_USERNAME"),
         recipients=[os.getenv("MAIL_USERNAME")],
     )  # Replace with the recipient's email
-    msg.body = f"Name: {name}\Phone Number\nEmail: {email}\nMessage: {message}"
+    msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
 
     # Send the email
     mail.send(msg)
