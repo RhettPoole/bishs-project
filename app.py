@@ -4,7 +4,7 @@
 # project for Bish's, it is solely a showcase of my development skills and /n
 # should not be considered an official Bish's product. **
 
-#Framework
+#FLASK Framework
 from flask import Flask, render_template, request, redirect, url_for
 #Email
 from flask_mail import Mail, Message
