@@ -76,6 +76,7 @@ def submit():
     db.session.add(new_submission)
     db.session.commit()
 
+    # "Refresh" app after submitting the form
     return redirect(url_for("index"))
 
 
