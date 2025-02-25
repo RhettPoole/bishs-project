@@ -1,2 +1,3 @@
 # allows your repository to ignore certain files and directories so that your sensitive information is not exposed
 .env
+.gitignore
