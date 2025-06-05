@@ -5,13 +5,17 @@
 # should not be considered an official Bish's product. **
 
 #FLASK Framework
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+
 #Email
 from flask_mail import Mail, Message
+
 #Database
 from flask_sqlalchemy import SQLAlchemy
+
 # .env file management so we can hide info on GitHub - https://pypi.org/project/python-dotenv/
 from dotenv import load_dotenv
+
 #Local file management, also allows for Heroku to find port numbers so it can use it as an environment variable
 import os
 
@@ -78,6 +82,55 @@ def submit():
 
     # "Refresh" app after submitting the form
     return redirect(url_for("index"))
+
+''' 
+***********************
+START SR_TRACKER LOGIC - GET
+***********************
+'''
+
+repair_orders = {
+    '86874': {'name': 'Poole', 'status': 'In Progress', 'details': 'Waiting on parts', 'writer': 'Brett Murdock', 'phone': '208-538-1043'},        
+    '86875': {'name': 'Blair Leavitt', 'status': 'Completed', 'details': 'Ready for pickup', 'writer': 'Thomas Murdock', 'phone': '208-538-1044'}
+} 
+
+# Define route for sr_tracker and render the form before delivering data to customer.
+@app.route("/sr_tracker")
+def sr_tracker():
+    return render_template("sr_tracker.html")
+
+# Define new route for GET function.
+@app.route('/handle_get', methods=['GET'])
+# If sr_name and sr_number exist as key:value pairs, display welcome message, if not display !exist message.
+def handle_get():
+    if request.method =='GET':
+        sr_name = request.args['sr_name']
+        sr_number = request.args['sr_number']
+        print(sr_name, sr_number)
+        order = repair_orders.get(sr_number)
+        if order and order['name'] == sr_name:
+            return render_template("sr_details.html", order=order)
+        else: return render_template("sr_tracker.html", error="That Service Request does not exist.")
+    else:
+        return render_template("sr_tracker.html")
+    
+''' 
+***********************
+START CREATE_SR LOGIC - POST
+***********************
+'''
+
+# Add a new service request / create an RO.
+@app.route('/handle_post', methods=['POST'])
+def handle_post():
+    if request.method == 'POST':
+        new_sr = request.json
+        # Get the first key and value from the JSON
+        sr_number, order_data = next(iter(new_sr.items()))
+        repair_orders[sr_number] = order_data
+        return jsonify({sr_number: order_data}), 201
+    else:
+        return render_template("sr_tracker.html")
 
 
 if __name__ == "__main__":

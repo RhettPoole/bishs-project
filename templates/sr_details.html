@@ -14,14 +14,8 @@
     <title>Bish's Service Test Page</title>
     <!-- Flask version of a stylesheet call, better than hardcoded paths. Can potentially implement later. 
      - Read that inline styles in your HTML file can be better for load times than an external CSS file in the static folder. Can implement later if needed. -->
-    <link
-      rel="stylesheet"
-      href="/static/css/styles.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/static/css/normalize.css"
-    />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="/static/css/normalize.css" />
   </head>
   <body>
     <header class="disclaimer">
@@ -31,9 +25,13 @@
       should not be considered an official Bish's product. **
     </header>
     <header class="main-header">
-      <a href="https://www.bishs.com/">  
-      <img id='logo' src="/static/images/bishs-logo.png" href="https://www.bishs.com/?utm_term=&utm_campaign=PMAX+-+November+2024+-+AUT&utm_source=adwords&utm_medium=ppc&hsa_acc=5831457341&hsa_cam=22073950548&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiAy8K8BhCZARIsAKJ8sfQRXEHWWxAsLf7RFS393KIDcBHwvwPfQDD66J8tWQAgpH8VORSM3uUaAvzfEALw_wcB" alt="Bish's RV logo" 
-        ></a>
+      <a href="https://www.bishs.com/">
+        <img
+          id="logo"
+          src="/static/images/bishs-logo.png"
+          href="https://www.bishs.com/?utm_term=&utm_campaign=PMAX+-+November+2024+-+AUT&utm_source=adwords&utm_medium=ppc&hsa_acc=5831457341&hsa_cam=22073950548&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQiAy8K8BhCZARIsAKJ8sfQRXEHWWxAsLf7RFS393KIDcBHwvwPfQDD66J8tWQAgpH8VORSM3uUaAvzfEALw_wcB"
+          alt="Bish's RV logo"
+      /></a>
       <nav>
         <ul>
           <li><a href="/" class="current">Service</a></li>
@@ -47,30 +45,19 @@
         </ul>
       </nav>
     </header>
-    <img
-      id="service-header"
-      src="/static/images/service-header.jpg"
-      alt="Photo of Bish's RV's external service counter and employees.">
-    <div class="form-container">
-      <h1>Service Request</h1>
-      <form action="/send_email" method="post">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-group">
-        <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="message">List of repairs</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
-    </div>
+    <main>
+      {% if order %}
+      <div class="result">
+        <h3> Status for {{order.name}}: </h3>
+        <p>Status: {{ order.status }}</p>
+        <p>Details: {{ order.details }}</p>
+        <p>Service Writer: {{ order.writer }} </p>
+        <p>Phone Number: {{ order.phone }} </p>
+      </div>
+      {% elif error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+    </main>
     <footer>
       <p id="copyright"></p>
       <p>United States of America |</p>
