@@ -46,17 +46,7 @@
       </nav>
     </header>
     <main>
-      {% if order %}
-      <div class="result">
-        <h3> Status for {{order.name}}: </h3>
-        <p>Status: {{ order.status }}</p>
-        <p>Details: {{ order.details }}</p>
-        <p>Service Writer: {{ order.writer }} </p>
-        <p>Phone Number: {{ order.phone }} </p>
-      </div>
-      {% elif error %}
-        <div class="error">{{ error }}</div>
-      {% endif %}
+      
     </main>
     <footer>
       <p id="copyright"></p>

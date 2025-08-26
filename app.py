@@ -32,7 +32,7 @@ app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 
 # Configure SQLAlchemy database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"  # database URI - SQLite - https://www.sqlite.org/docs.html -> https://sqliteviewer.app/
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///instance/test.db"  # database URI - SQLite - https://www.sqlite.org/docs.html -> https://sqliteviewer.app/
 # Also look at DOCKER (For virtal machines), and Postgres - Mike/Bryan brought these up as tools to study for database integration/management.
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # disable tracking modifications
 
@@ -131,6 +131,14 @@ def handle_post():
         return jsonify({sr_number: order_data}), 201
     else:
         return render_template("sr_tracker.html")
+
+
+''' 
+***********************
+START CREATE_SR LOGIC - PUT
+***********************
+'''
+
 
 
 if __name__ == "__main__":
